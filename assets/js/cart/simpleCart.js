@@ -1832,7 +1832,7 @@
 
 
 								// 检查当前页面是否是 boat-1.html 或 boat-2.html
-								if (window.location.pathname.includes("boat-1.html") || window.location.pathname.includes("boat-2.html")) {
+								if (/(boat|car)-\d+\.html/i.test(window.location.pathname)) {
 									// 處理日期欄位
 									var $dateField1 = simpleCart.$('.item_session'); // 假設這是日期欄位的 class
 									var dateVal1 = $dateField1.val(); // 獲取日期值

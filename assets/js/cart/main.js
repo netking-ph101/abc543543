@@ -30,12 +30,14 @@ simpleCart.ready(function () {
 
     var currentPage = window.location.pathname;
 
-    if (currentPage.indexOf('boat-1.html') > -1 || currentPage.indexOf('boat-2.html') > -1) {
+    console.log("Current Page:", currentPage);
+
+    if (/boat-\d+\.html/.test(currentPage) || /car-\d+\.html/.test(currentPage)) {
       // 如果当前页面的路径包含 'boat-1.html' 或 'boat.html'，则执行操作 A
       // 在这里放置操作 A 的代码
       var newCheckInDateString = item.get('date');
       var newCheckOutDateString = item.get('session');
-     
+
       // Convert date strings to Date objects
       var newCheckInDate = new Date(newCheckInDateString.replace(/-/g, '/'));
       var newCheckOutDate = new Date(newCheckOutDateString.replace(/-/g, '/'));
@@ -45,15 +47,11 @@ simpleCart.ready(function () {
       newCheckOutDate.setHours(0, 0, 0, 0);
 
       var dateDiffInDays = Math.floor((newCheckOutDate - newCheckInDate) / (1000 * 60 * 60 * 24));
-     
+
       if (newCheckInDate - newCheckOutDate >= 0) {
         alert('回程日期要大於出發日期！');
         return false;
       }
-      
-    
-
-
 
 
 
@@ -65,7 +63,7 @@ simpleCart.ready(function () {
       var newRoomId = item.get('name');
       var newCheckInDateString = item.get('date');
       var newCheckOutDateString = item.get('session');
-     
+
       // Convert date strings to Date objects
       var newCheckInDate = new Date(newCheckInDateString.replace(/-/g, '/'));
       var newCheckOutDate = new Date(newCheckOutDateString.replace(/-/g, '/'));
@@ -75,7 +73,7 @@ simpleCart.ready(function () {
       newCheckOutDate.setHours(0, 0, 0, 0);
 
       var dateDiffInDays = Math.floor((newCheckOutDate - newCheckInDate) / (1000 * 60 * 60 * 24));
-     
+
       if (newCheckInDate - newCheckOutDate === 0) {
         alert('至少要訂１天喔！');
         return false;

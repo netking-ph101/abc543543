@@ -11,18 +11,18 @@ var currentDateInput = document.getElementById('currentDate');
 currentDateInput.value = today;
 
 var currentPage = window.location.href;
-if (currentPage.indexOf('boat-1.html') > -1 || currentPage.indexOf('boat-2.html') > -1) {
-  
-    var nextDateInput=document.getElementById('nextDate');
-    nextDateInput.value = today;
-   
-    currentDateInput.addEventListener('change', function() {
-        // 當 currentDate 的值改變時，將其值設置給 nextDate
-        nextDateInput.value = currentDateInput.value;
-        nextDateInput.min=currentDateInput.value;
-    });
+if (/boat-\d+\.html/.test(currentPage) || /car-\d+\.html/.test(currentPage)) {
 
-  }
+  var nextDateInput = document.getElementById('nextDate');
+  nextDateInput.value = today;
+
+  currentDateInput.addEventListener('change', function () {
+    // 當 currentDate 的值改變時，將其值設置給 nextDate
+    nextDateInput.value = currentDateInput.value;
+    nextDateInput.min = currentDateInput.value;
+  });
+
+}
 
 
 // 设置最小日期为今天
